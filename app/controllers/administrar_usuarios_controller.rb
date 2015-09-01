@@ -1,7 +1,9 @@
 class AdministrarUsuariosController < ApplicationController
   before_action :set_administrar_usuario, only: [:show, :edit, :update, :destroy]
-
+  before_filter :restrict_user_by_role
+  
   respond_to :html
+
 
   def index
     @administrar_usuarios = AdministrarUsuario.all   
@@ -38,12 +40,24 @@ class AdministrarUsuariosController < ApplicationController
     @administrar_usuario.destroy
   end
   
+  protected
+  def restrict_user_by_role
+       @administrar_usuarios = AdministrarUsuario.all 
+       @administrar_usuarios.each do |administrar_usuario|        
+        if administrar_usuario.user.id == current_user.id and administrar_usuario.rol.id == 1             
+                flash[:notice] = "Bienvenido #{current_user.nombre1.capitalize}"
+
+        elsif administrar_usuario.user.id != current_user.id
+          redirect_to root_path # change this to your 404 page if needed
+        end             
+      end           
+  end
 
   private
     def set_administrar_usuario
       @administrar_usuario = AdministrarUsuario.find(params[:id])
     end
-
+  
     def administrar_usuario_params
       params.require(:administrar_usuario).permit(:rol_id, :user_id)
     end

@@ -25,7 +25,8 @@ class ExperienciasLaboralesController < ApplicationController
 
   def create
     @experiencia_laboral = ExperienciaLaboral.new(experiencia_laboral_params)
-    render :action => :new unless @experiencia_laboral.save
+     render :action => :new unless @experiencia_laboral.save 
+       
   end
 
   def update

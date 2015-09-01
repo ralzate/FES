@@ -54,7 +54,6 @@ GEM
       rack (>= 0.9.0)
     bootstrap-datepicker-rails (1.4.0)
       railties (>= 3.0)
-    bootstrap-select-rails (1.6.3)
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.2.2)
@@ -196,7 +195,6 @@ DEPENDENCIES
   annotate!
   better_errors
   bootstrap-datepicker-rails
-  bootstrap-select-rails
   bootstrap-will_paginate
   cancan
   coffee-rails (~> 4.0.0)

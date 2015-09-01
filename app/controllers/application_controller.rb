@@ -10,15 +10,17 @@ class ApplicationController < ActionController::Base
   layout 'admin'
 
 
-  # Metodo para devise
 
+
+
+
+  # Metodo para devise
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(
       :nombre1, :nombre2, :apellido1, :apellido2, :cedula, :avatar, 
       :telefono, :email, :password, :password_confirmation) }
-
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
       :nombre1, :nombre2, :apellido1, :apellido2, :cedula, :profesion, 
       :tarjeta_profesional, :estado_civil, :direccion, :fecha_nacimiento,

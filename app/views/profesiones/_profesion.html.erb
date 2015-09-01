@@ -2,7 +2,6 @@
 	<td><%= link_to profesion.id, edit_profesion_path(profesion), :remote => true %></td>
 	<td><%= profesion.nombre.capitalize %></td>
 	<td><%= profesion.descripcion.capitalize %></td>
-	
 	<td>
 		<%= link_to  image_tag('view1.png'), profesion, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
 		<%= link_to image_tag('editar1.png'), edit_profesion_path(profesion),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>

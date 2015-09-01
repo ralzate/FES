@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :administrar_usuarios
   resources :roles
   resources :curriculums

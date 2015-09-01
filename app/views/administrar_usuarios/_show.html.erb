@@ -1,7 +1,7 @@
 <%- model_class = AdministrarUsuario -%>
 <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="$.lazybox.close()">&times;</button>
 <div class="page-header">
-  <h2>Profesion:<%= @administrar_usuario.id %></h2>
+  <h2>Admin Usuario :<%= @administrar_usuario.id %></h2>
   <table class="table table-bordered table-hover" >
     <thead>
       <tr class="info">
@@ -11,8 +11,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><p><%= @administrar_usuario.user %></p></td>
-        <td><p><%= @administrar_usuario.rol %></p></td> 
+        <td><p><%= @administrar_usuario.user.nombre1 %></p></td>
+        <td><p><%= @administrar_usuario.rol.nombre %></p></td> 
       </tr>
     </tbody>
   </table>

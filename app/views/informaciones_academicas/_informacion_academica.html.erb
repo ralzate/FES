@@ -4,7 +4,7 @@
     <td><%= informacion_academica.nombre %></td>
     <td><%= informacion_academica.fecha_terminacion %></td>
     <td><%= informacion_academica.titulo_obtenido %></td>
-    <td><%= informacion_academica.usuario_id %></td>    
+    <td><%= informacion_academica.user_id %></td>    
     <td>
         <%= link_to  image_tag('view1.png'), informacion_academica, :remote => true,  :rel => "tooltip", :title => "Mostrar", :class => 'btn btn-link'%>
         <%= link_to image_tag('editar1.png'), edit_informacion_academica_path(informacion_academica),  :remote => true,  :rel => "tooltip", :title => "Editar", :class => 'btn btn-link'%>

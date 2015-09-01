@@ -1,19 +1,39 @@
+            <section class="content bgcolor-4">
+
 <h2>Iniciar Sesión</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <div class="form-group">
-    <%= f.label :mi_correo, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
-        <%= f.email_field :email, autofocus: true , class: "form-control" %>
+        
     </div>
+</div>
+<div class="input-email">
+
+<span class="input input--madoka ">
+<%= f.email_field :email, class: "input__field input__field--madoka",  :id => "input-31"  %>
+                    <label class="input__label input__label--madoka" for="input-31">
+                        <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                        </svg>
+                        <span class="input__label-content input__label-content--madoka">Ingresa tu Email</span>
+                    </label>
+                </span>
 </div>
 
-<div class="form-group">
-    <%= f.label :contraseña, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
+<div class="input-clave">
+<span class="input input--madoka ">
+        <%= f.password_field :password, autocomplete: "off", class: "input__field input__field--madoka",  :id => "input-32" %>
+                    <label class="input__label input__label--madoka" for="input-32">
+                        <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                            <path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+                        </svg>
+                        <span class="input__label-content input__label-content--madoka">Ingresa tu contraseña</span>
+                    </label>
+                </span>
 </div>
+
+
 
 <% if devise_mapping.rememberable? -%>
 <div class="form-group">
@@ -32,3 +52,315 @@
 
 
 <% end %>
+
+
+<style type="text/css">
+
+.input-email{
+    margin-left:50px !important;
+}
+
+#input-31{
+    margin-left: -1400px !important;
+    margin-right: 30px;
+}
+
+.input-clave{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+}
+
+
+#input-32{
+    margin-left: -1400px !important;
+    margin-right: 30px;
+}
+
+/* Esconde en Moviles */
+@media (max-width: 1000px) and (min-width: 50px) {
+  .input-email{
+    margin-left: 200px !important;
+  }
+}
+
+/* Esconde en Moviles */
+@media (max-width: 1000px) and (min-width: 50px) {
+  .input-clave{
+    margin-left: 200px;
+  }
+}
+
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+
+.bgcolor-4 { background: #2f3238; color: #fff; }
+
+
+
+.input {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 1em;
+    max-width: 350px;
+    width: calc(100% - 2em);
+    vertical-align: top;
+}
+
+.input__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    width: 60%;
+    border: none;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: #aaa;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+}
+
+.input__field:focus {
+    outline: none;
+}
+
+.input__label {
+    display: inline-block;
+    float: right;
+    padding: 0 1em;
+    width: 40%;
+    color: #6a7989;
+    font-weight: bold;
+    font-size: 70.25%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.input__label-content {
+    position: relative;
+    display: block;
+    padding: 1.6em 0;
+    width: 100%;
+}
+
+.graphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+}
+
+.icon {
+    color: #ddd;
+    font-size: 150%;
+}
+
+/* Madoka */
+.input--madoka {
+    margin: 1.1em;
+}
+
+.input__field--madoka {
+    width: 100%;
+    background: transparent;
+    color: #7A7593;
+    margin-left: 1800px;
+}
+
+.input__label--madoka {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #7A7593;
+    text-align: left;
+    cursor: text;
+    margin-left: -60%;
+}
+
+.input__label-content--madoka {
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: transform 0.3s;
+}
+
+.graphic--madoka {
+    -webkit-transform: scale3d(1, -1, 1);
+    transform: scale3d(1, -1, 1);
+    -webkit-transition: stroke-dashoffset 0.3s;
+    transition: stroke-dashoffset 0.3s;
+    pointer-events: none;
+
+    stroke: #7A7593;
+    stroke-width: 4px;
+    stroke-dasharray: 962;
+    stroke-dashoffset: 558;
+}
+
+.input__field--madoka:focus + .input__label--madoka,
+.input--filled .input__label--madoka {
+    cursor: default;
+    pointer-events: none;
+}
+
+.input__field--madoka:focus + .input__label--madoka .graphic--madoka,
+.input--filled .graphic--madoka {
+    stroke-dashoffset: 0;
+}
+
+.input__field--madoka:focus + .input__label--madoka .input__label-content--madoka,
+.input--filled .input__label-content--madoka {
+    -webkit-transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+    transform: scale3d(0.81, 0.81, 1) translate3d(0, 4em, 0);
+}
+
+</style>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+
+ 
+
+            
+        </div><!-- /container -->
+        <script>
+
+            /*!
+ * classie - class helper functions
+ * from bonzo https://github.com/ded/bonzo
+ * 
+ * classie.has( elem, 'my-class' ) -> true/false
+ * classie.add( elem, 'my-new-class' )
+ * classie.remove( elem, 'my-unwanted-class' )
+ * classie.toggle( elem, 'my-class' )
+ */
+
+/*jshint browser: true, strict: true, undef: true */
+/*global define: false */
+
+( function( window ) {
+
+'use strict';
+
+// class helper functions from bonzo https://github.com/ded/bonzo
+
+function classReg( className ) {
+  return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+}
+
+// classList support for class management
+// altho to be fair, the api sucks because it won't accept multiple classes at once
+var hasClass, addClass, removeClass;
+
+if ( 'classList' in document.documentElement ) {
+  hasClass = function( elem, c ) {
+    return elem.classList.contains( c );
+  };
+  addClass = function( elem, c ) {
+    elem.classList.add( c );
+  };
+  removeClass = function( elem, c ) {
+    elem.classList.remove( c );
+  };
+}
+else {
+  hasClass = function( elem, c ) {
+    return classReg( c ).test( elem.className );
+  };
+  addClass = function( elem, c ) {
+    if ( !hasClass( elem, c ) ) {
+      elem.className = elem.className + ' ' + c;
+    }
+  };
+  removeClass = function( elem, c ) {
+    elem.className = elem.className.replace( classReg( c ), ' ' );
+  };
+}
+
+function toggleClass( elem, c ) {
+  var fn = hasClass( elem, c ) ? removeClass : addClass;
+  fn( elem, c );
+}
+
+var classie = {
+  // full names
+  hasClass: hasClass,
+  addClass: addClass,
+  removeClass: removeClass,
+  toggleClass: toggleClass,
+  // short names
+  has: hasClass,
+  add: addClass,
+  remove: removeClass,
+  toggle: toggleClass
+};
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( classie );
+} else {
+  // browser global
+  window.classie = classie;
+}
+
+})( window );
+
+
+        </script>
+        <script>
+            (function() {
+                // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+                if (!String.prototype.trim) {
+                    (function() {
+                        // Make sure we trim BOM and NBSP
+                        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                        String.prototype.trim = function() {
+                            return this.replace(rtrim, '');
+                        };
+                    })();
+                }
+
+                [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                    // in case the input is already filled..
+                    if( inputEl.value.trim() !== '' ) {
+                        classie.add( inputEl.parentNode, 'input--filled' );
+                    }
+
+                    // events:
+                    inputEl.addEventListener( 'focus', onInputFocus );
+                    inputEl.addEventListener( 'blur', onInputBlur );
+                } );
+
+                function onInputFocus( ev ) {
+                    classie.add( ev.target.parentNode, 'input--filled' );
+                }
+
+                function onInputBlur( ev ) {
+                    if( ev.target.value.trim() === '' ) {
+                        classie.remove( ev.target.parentNode, 'input--filled' );
+                    }
+                }
+            })();
+        </script>
+    </body>
+</html>
+
+

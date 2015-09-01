@@ -16,7 +16,8 @@
  *= require lazybox
  */
 
- 
+
+
  #lazybox div.team { max-width: 500px; }
 
  .lazybox {
@@ -87,15 +88,60 @@ de pantalla está entre "x" y "x" pixeles de ancho */
 
 /* Esconde en Moviles */
 @media (max-width: 1000px) and (min-width: 50px) {
-  .boton-oculto-moviles {
+  .oculto-en-moviles {
   display: none !important;
   }
 }
 
 
-/* Esconde en Moviles */
+/* Esconde en escritorio */
 @media (min-width: 1001px) {
-  .boton-oculto-escritorio {
+  .oculto-en-escritorio {
   display: none !important;
   }
+}
+
+
+.links{
+  margin-top: 1%;
+  margin-left: 90%;
+  width: 20%;
+}
+
+.navbar-form{
+  margin-right: -30% !important;
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #FFFFFF !important;
+}
+
+#menu-primary-navigation{
+  margin-top: -2%;
+}
+
+.dropdown{
+  margin-top: 3.8%;
+}
+
+.session{
+  margin-top: -24%;
+  margin-left: 50%;
+   width: 190% !important;
+
+}
+
+.registration{
+   margin-top: 14%; 
+
+}
+
+#lazybox{
+  width: 500px;
+}
+
+.btn{
+  color: #FFFFFF !important;
 }

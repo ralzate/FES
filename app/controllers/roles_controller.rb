@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
-  #before_action :set_profesion, only: [:show, :edit, :update, :destroy]
+  before_action :set_profesion, only: [:show, :edit, :update, :destroy]
+  before_filter :restrict_user_by_role
 
   respond_to :html
 
@@ -38,6 +39,19 @@ class RolesController < ApplicationController
     @rol.destroy
   end
   
+  protected
+  def restrict_user_by_role
+       @administrar_usuarios = AdministrarUsuario.all 
+       @administrar_usuarios.each do |administrar_usuario|        
+        if administrar_usuario.user.id == current_user.id and administrar_usuario.rol.id == 1             
+                flash[:notice] = "Bienvenido #{current_user.nombre1.capitalize}"
+
+        elsif administrar_usuario.user.id != current_user.id
+          redirect_to root_path # change this to your 404 page if needed
+        end             
+      end           
+  end
+
   private
   def set_profesion
     @rol = Rol.find(params[:id])

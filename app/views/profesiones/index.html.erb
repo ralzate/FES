@@ -11,7 +11,15 @@ Buscar:
 <% end %>
 <br />
 
-<table class="table table-bordered table-hover">
+
+
+
+<%= javascript_include_tag "buscador" %>
+
+<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Buscar" />
+
+
+<table class="table table-bordered table-hover"  id="dev-table">
   <thead>
     <tr>
       <th>#</th>
@@ -24,8 +32,7 @@ Buscar:
     <%= render @profesiones %>
   </tbody>
 </table>
-<%= link_to image_tag('nuevo.png',),  new_profesion_path,  :remote => true, :rel => "tooltip", :title => "Ingresar nueva Profesión", :class => "btn btn-link boton-oculto-moviles " %>
-<%= link_to image_tag('nuevo.png',),  new_profesion_path,  :remote => true, :rel => "tooltip", :title => "Ingresar nueva Profesión", :class => "btn btn-link boton-oculto-escritorio " %>
+<%= link_to image_tag('nuevo.png',),  new_profesion_path,  :remote => true, :rel => "tooltip", :title => "Ingresar nueva Profesión", :class => "btn btn-link oculto-en-moviles " %>
 
 
 <br />

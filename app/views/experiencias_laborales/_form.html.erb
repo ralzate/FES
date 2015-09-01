@@ -1,6 +1,12 @@
-<%= javascript_include_tag "fecha" %>
 
-<%= simple_form_for(@experiencia_laboral, :html => { :multipart => true, :remote => true }) do |f| %>
+
+
+<%= javascript_include_tag "fecha" %>
+<%= javascript_include_tag "validacion" %>
+
+
+
+<%= simple_form_for(@experiencia_laboral, :html => { :multipart => true, :remote => true}) do |f| %>
 <div class="user">
   <div class="modal-header">
     <h4 class="modal-title"><h3>Datos Profesión Usuario</h3></h4>
@@ -10,30 +16,38 @@
       Empresa:
     </div>
     <div class="col-md-6">
-      <%= f.input :empresa, :label => false,  :required => true %>
-    </div>
+      <span id="empresa">
+        <span class="textfieldRequiredMsg">Por favor ingresa una Empresa valida</span>
+        <%= f.input :empresa, :label => false,  :required => true   %>
+        </span>
+    </div>  
     <div class="col-md-4">
       Cargo:
     </div>
     <div class="col-md-6">
-      <%= f.input :cargo, :label => false,  :required => true  %>
-    </div>
+    <span id="cargo">
+      <span class="textfieldRequiredMsg">Por favor ingresa un cargo valido</span>
+        <%= f.input :cargo, :label => false,  :required => true  %>
+      </div>
+    </span>
   </div>
   <div class="row">
     <div class="col-md-4">
       Telefono:
     </div>
     <div class="col-md-6">
-      <%= f.input :telefono, :label => false,  :required => true %>
+    <span id="telefono">
+      <span class="textfieldRequiredMsg">Por favor ingresa un Telefono Valido</span>
+        <%= f.input :telefono, :label => false,  :required => true %>
+    </span>
     </div>
-   
   </div>
   <div class="row">
     <div class="col-md-4">
       Fecha Inicio:
     </div>
     <div class="col-md-6">
-        <%= f.input :fecha_inicio, :as => :string, :label => false, :required => true,  :input_html => {  :class => "datepicker " } %>
+        <%= f.input :fecha_inicio, :as => :string, :label => false, :required => true,  :input_html => {  :class => "datepicker " } %><span class="textfieldRequiredMsg">Se necesita un valor.</span> 
     </div>
     <div class="col-md-4">
       Fecha Terminación:
@@ -50,3 +64,4 @@
   <a href="#" class="btn btn-default" onclick="$.lazybox.close()">Cerrar</a>
 </div>
 <% end %>
+

@@ -12,3 +12,5 @@ class CreateExperienciasLaborales < ActiveRecord::Migration
     end
   end
 end
+
+

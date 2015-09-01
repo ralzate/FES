@@ -1,5 +1,5 @@
 class ProfesionesController < ApplicationController
-  #before_action :set_profesion, only: [:show, :edit, :update, :destroy]
+  before_action :set_profesion, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -25,7 +25,7 @@ class ProfesionesController < ApplicationController
 
   def create
     @profesion = Profesion.new(profesion_params)
-    render :action => :new unless @profesion.save
+    @profesion.save
   end
 
   def update

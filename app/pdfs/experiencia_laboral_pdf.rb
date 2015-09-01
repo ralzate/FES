@@ -13,6 +13,7 @@ class ExperienciaLaboralPdf < Prawn::Document
    	    @informaciones_academicas = informaciones_academicas
    	    @referencias_personales = referencias_personales
    	    @users = users
+		datos_servidual
 	    logo_1
 	    titulo_2
 	    datos_personales_3
@@ -21,44 +22,101 @@ class ExperienciaLaboralPdf < Prawn::Document
 	    estudios_complementarios_6
 	    informaciones_academicas_7
 	    referencias_personales_8
-	    pie_de_pagina
+	end
+
+
+	def datos_servidual	
+
+		move_down -15
+		y_position = cursor - 1
+			bounding_box([20, y_position], :width => 280, :height => 10) do
+			transparent(0.0) { stroke_bounds }
+			text "www.servidual.com", size: 9, :font => "Courier", style: :bold
+
+		end
+
+		y_position = cursor - 4
+			bounding_box([10, y_position], :width => 280, :height => 10) do
+			transparent(0.0) { stroke_bounds }
+			text "servidual@servidual.com", size: 9, :font => "Courier", style: :bold
+		end
+
+		y_position = cursor - 4
+			bounding_box([25, y_position], :width => 280, :height => 10) do
+			transparent(0.0) { stroke_bounds }
+			text "(+574) 4440996", size: 9, style: :bold
+		end
+
+		y_position = cursor - 4
+			bounding_box([24, y_position], :width => 280, :height => 10) do
+			transparent(0.0) { stroke_bounds }
+			text "Cra 80# 44B-149", size: 9, :font => "Courier", style: :bold
+		end
+
+		y_position = cursor - 4
+			bounding_box([18, y_position], :width => 280, :height => 250) do
+			transparent(0.0) { stroke_bounds }
+			text "La America-Medellin",  size: 9, :font => "Courier", style: :bold
+		end
+			
+			
 	end
 
 	def logo_1
 	    # This inserts an image in the pdf file and sets the size of the image
-	    image "#{Rails.root}/app/assets/images/logo/logo.png", :at => [400, 730], :width => 150, :height => 90
+	    image "#{Rails.root}/app/assets/images/logo/logo.png", :at => [180, 738], :width => 135, :height => 70
  		t = Time.now
- 	  	draw_text  formatted = "#{t.strftime("%d-%m-%Y")}", :at => [450, 616], size: 10, style: :bold 
+ 	  	#draw_text  formatted = "#{t.strftime("%d-%m-%Y")}", :at => [450, 616], size: 10, style: :bold 
 	end
 
 	def titulo_2
-		move_down 20
-	    text "Mi Curriculum", size: 28, style: :bold_italic
+		#move_down 20
+	    #text "Mi Curriculum", size: 28, style: :bold_italic
 	end
 
 
 	def datos_personales_3
-		move_down 20
-	    text "Datos Personales", size: 28, style: :bold
+		#move_down 20
+	    #text "Datos Personales", size: 28, style: :bold
 	end
 
 	def datos_usuario_4
-	  	move_down 20
+	  	move_down -180
+	  	text "Mis Datos Personales", size: 15, style: :bold, :font => "Courier", :align => :center
 	  	#text "Mis Experiencias Laborales", size: 25, style: :bold
-	  	table(users_rows, :column_widths => [125, 125, 125, 125], :cell_style => {:background_color => "F2F2F2", position: :absulte}) do
+	  	table(users_rows, :column_widths => [125, 125, 125, 125], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+
 		end
-		table(users_rows2, :column_widths => [125, 125, 125, 125], :cell_style => {:background_color => "F2F2F2", position: :absulte}) do
+		move_down 10
+
+
+
+		table(users_rows2, :column_widths => [125, 125, 125, 125], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+					  	
+
 		end
-		table(perfil_rows, :column_widths => [170, 100, 230], :cell_style => {:background_color => "F2F2F2", position: :absulte}) do
+		move_down 10
+		table(perfil_rows, :column_widths => [125, 160, 215], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+
 		end
 		canvas do
-			fill_circle [bounds.left, bounds.top], 30
-			fill_circle [bounds.right, bounds.top], 30
-			fill_circle [bounds.right, bounds.bottom], 30
-			fill_circle [0, 0], 30
+			fill_circle [bounds.left, bounds.top], 15
+			fill_circle [bounds.right, bounds.top], 15
+			fill_circle [bounds.right, bounds.bottom], 15
+			fill_circle [bounds.left, bounds.bottom], 15
+			
 		end
 	end
 
@@ -72,30 +130,35 @@ class ExperienciaLaboralPdf < Prawn::Document
 	end
 
 	def users_rows2
-    	[['Profesion', 'Fecha Nacimiento', 'Celular', 'Telefono']] +
+    	[['Celular', 'Telefono', 'Profesion', 'Estado Civil']] +
       		@users.map do |user|
-      	[user.profesion, user.fecha_nacimiento, user.celular, user.telefono]
+      	[ user.celular, user.telefono, user.profesion, user.estado_civil]
     	end
 	end
 
 	def perfil_rows
-		[['Email', 'Estado Civil', 'Perfil']] +
+		[['Fecha Nacimiento','Email', 'Perfil']] +
 			@users.map do |user|
-		[user.email, user.estado_civil, user.perfil]
+		[user.fecha_nacimiento, user.email, user.perfil]
 		end
 	end
 
 	def experiencias_laborales_5
-	  	move_down 50
-	  	text "Mis Experiencias Laborales", size: 25, style: :bold
-	  	table(experiencias_laborales_rows, :column_widths => [20, 90, 90, 90, 90, 120], :cell_style => {:background_color => "F2F2F2", position: :absulte}) do
+	  	move_down 60
+	  	text "Mis Experiencias Laborales", size: 15, style: :bold_italic, :font => "Courier", :align => :center
+		table(experiencias_laborales_rows, :column_widths => [20, 90, 90, 90, 90, 120], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+			row(0).borders = [:top, :bottom]	
 		end
 		canvas do
-			fill_circle [bounds.left, bounds.top], 30
-			fill_circle [bounds.right, bounds.top], 30
-			fill_circle [bounds.right, bounds.bottom], 30
-			fill_circle [0, 0], 30
+			fill_circle [bounds.left, bounds.top], 15
+			fill_circle [bounds.right, bounds.top], 15
+			fill_circle [bounds.right, bounds.bottom], 15
+			fill_circle [bounds.left, bounds.bottom], 15
+			
 		end
 	end
 
@@ -110,15 +173,21 @@ class ExperienciaLaboralPdf < Prawn::Document
 
 	def estudios_complementarios_6
 	  	move_down 50
-	  	text "Estudios Complementarios", size: 25, style: :bold
-	  	table(estudios_complementarios_rows, :column_widths => [20, 160, 160, 160], :cell_style => {:background_color => "F2F2F2"}) do
+	  	text "Estudios Complementarios", size: 15, style: :bold_italic, :font => "Courier", :align => :center
+
+		table(estudios_complementarios_rows, :column_widths => [20, 160, 160, 160], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+			row(0).borders = [:top, :bottom]	
 		end
 		canvas do
-			fill_circle [bounds.left, bounds.top], 30
-			fill_circle [bounds.right, bounds.top], 30
-			fill_circle [bounds.right, bounds.bottom], 30
-			fill_circle [0, 0], 30
+			fill_circle [bounds.left, bounds.top], 15
+			fill_circle [bounds.right, bounds.top], 15
+			fill_circle [bounds.right, bounds.bottom], 15
+			fill_circle [bounds.left, bounds.bottom], 15
+			
 		end
 	end
 
@@ -132,15 +201,20 @@ class ExperienciaLaboralPdf < Prawn::Document
 
 	def informaciones_academicas_7
 	  	move_down 50
-	  	text "Informaciones Academicas", size: 25, style: :bold
-	  	table(informaciones_academicas_rows, :column_widths => [20, 120, 120, 120, 120], :cell_style => {:background_color => "F2F2F2"}) do
+	  	text "Informaciones Academicas", size: 15, style: :bold_italic, :font => "Courier", :align => :center
+		table(informaciones_academicas_rows, :column_widths => [20, 120, 120, 120, 120], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+			row(0).borders = [:top, :bottom]	
 		end
 		canvas do
-			fill_circle [bounds.left, bounds.top], 30
-			fill_circle [bounds.right, bounds.top], 30
-			fill_circle [bounds.right, bounds.bottom], 30
-			fill_circle [0, 0], 30
+			fill_circle [bounds.left, bounds.top], 15
+			fill_circle [bounds.right, bounds.top], 15
+			fill_circle [bounds.right, bounds.bottom], 15
+			fill_circle [bounds.left, bounds.bottom], 15
+			
 		end
 	end
 
@@ -155,15 +229,20 @@ class ExperienciaLaboralPdf < Prawn::Document
 
 	def referencias_personales_8
 		move_down 50
-		text "Referencias Personales", size: 25, style: :bold
-	  	table(referencias_personales_rows, :column_widths => [20, 160, 160, 160], :cell_style => {:background_color => "F2F2F2"}) do
+		text "Referencias Personales", size: 16, style: :bold_italic, :font => "Courier",  :align => :center
+		table(referencias_personales_rows, :column_widths => [20, 160, 160, 160], :cell_style => {
+		  	position: :absulte,  
+		  	size: 10,
+		    :font => "Courier", :borders => []}) do
 			row(0).font_style = :bold
+			row(0).borders = [:top, :bottom]	
 		end
 		canvas do
-			fill_circle [bounds.left, bounds.top], 30
-			fill_circle [bounds.right, bounds.top], 30
-			fill_circle [bounds.right, bounds.bottom], 30
-			fill_circle [0, 0], 30
+			fill_circle [bounds.left, bounds.top], 15
+			fill_circle [bounds.right, bounds.top], 15
+			fill_circle [bounds.right, bounds.bottom], 15
+			fill_circle [bounds.left, bounds.bottom], 15
+			
 		end
 	end
 
@@ -175,13 +254,4 @@ class ExperienciaLaboralPdf < Prawn::Document
     	end
 	end
 
-	def pie_de_pagina	
-		move_down 480
-		text "www.servidual.com", size: 10, :align => :center, :style => :bold
-		text "servidual@servidual.com", size: 11, :style => :bold, :align => :center
-		text "(+574) 4440996", size: 11, :align => :center
-		text "________________________________________________", size: 15, :align => :center
-		text "Cra 80# 44B-149", size: 10, :align => :center
-		text "La America-Medellin",  size: 10, :align => :center
-	end
 end

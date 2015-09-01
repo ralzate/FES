@@ -12,7 +12,11 @@ Buscar:
 <% end %>
 <br />
 
-<table class="table table-bordered table-hover">
+<%= javascript_include_tag "buscador" %>
+
+<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Buscar" />
+
+<table class="table table-bordered table-hover"  id="dev-table">
   <thead>
     <tr>
       <th>#</th>
